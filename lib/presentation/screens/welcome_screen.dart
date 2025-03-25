@@ -87,12 +87,12 @@ class _WelcomescreenState extends State<Welcomescreen> {
                 ),
               )
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             Expanded(
               child: Center(
                 child: SizedBox(
-                  width: 300,
-                  height: 300,
+                  width: 250,
+                  height: 250,
                   child: GestureDetector(
                     onTapDown: (_) => _handleTap(),
                     child: RiveAnimation.asset(
@@ -104,6 +104,10 @@ class _WelcomescreenState extends State<Welcomescreen> {
                 ),
               ),
             ),
+
+
+
+
           ],
         ),
       ),
