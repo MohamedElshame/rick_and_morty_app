@@ -28,9 +28,9 @@ AppRouter(){
 Route? generateroute(RouteSettings settings){
 
 switch(settings.name){
-  case welcomescreen:
+  //case welcomescreen:
 
-  return MaterialPageRoute(builder: (_) => Welcomescreen() );
+ // return MaterialPageRoute(builder: (_) => Welcomescreen() );
 
 case characterscreen:
 return MaterialPageRoute(builder: (_) => BlocProvider(create: 
