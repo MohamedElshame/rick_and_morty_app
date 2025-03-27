@@ -18,7 +18,7 @@ class RickAndMortyApp extends StatelessWidget {
       create: (context) => appRouter.charactersCubit,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: characterscreen,
+        initialRoute: welcomescreen,
         onGenerateRoute: appRouter.generateroute,
       ),
     );

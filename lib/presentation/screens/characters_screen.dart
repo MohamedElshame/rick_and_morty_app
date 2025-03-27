@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty_app/business_logic/cubit/characters_cubit.dart';
 import 'package:rick_and_morty_app/constants/colors.dart';
 import 'package:rick_and_morty_app/data/models/characters.dart';
@@ -27,7 +28,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
 allcharacters = 
 BlocProvider.of<CharactersCubit>(context).getAllcharacters() ?? [];
 
-//! مش عارف ليه
+
 
   }
  Widget buildBlocWidget(){
@@ -50,7 +51,7 @@ if (state is CharactersLoading && allcharacters.isEmpty) {
   }
   return buildLoadedListWidgets();
 } else if (state is CharactersError) {
-  return Center(child: Text("خطأ في تحميل البيانات", style: TextStyle(color: Colors.white, fontSize: 20)));
+  return Center(child: Text("Error..", style: TextStyle(color: Colors.white, fontSize: 20)));
 } else {
   return showLoadingIndicator();
 }
@@ -84,7 +85,7 @@ if (isLastPage)
   Padding(
     padding: const EdgeInsets.all(15.0),
     child: Text(
-      "لا توجد المزيد من الشخصيات",
+      "No More Characters",
       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
     ),
   ),
@@ -120,8 +121,8 @@ Widget buildLoadMoreButton() {
           child: isLoading
             ? CircularProgressIndicator(color: Colors.white, strokeWidth: 3)
             : Text(
-                "تحميل المزيد",
-                style: TextStyle(fontSize: 18, color: Colors.white),
+                "Load More ",
+               style: GoogleFonts.montserrat(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold),
               ),
         );
       },

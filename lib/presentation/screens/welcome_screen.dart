@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rick_and_morty_app/constants/colors.dart';
+import 'package:rick_and_morty_app/constants/strings.dart';
 import 'package:rive/rive.dart';
 import 'package:rick_and_morty_app/animations/morty_enum.dart';
 
@@ -73,13 +75,17 @@ class _WelcomescreenState extends State<Welcomescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x1ff725197),
+      backgroundColor: Mycolors.MyPurple,
       body: SafeArea(
         child: Column(
+          
           children: [
+            SizedBox(height: 20,),
             Center(
-              child: Text(
-                "Welcome!\nTo\nRick And Morty World",
+              child: 
+              
+              Text(
+                "Rick And Morty World",
                 style: GoogleFonts.montserrat(
                   color: Colors.black,
                   fontSize: 25,
@@ -87,9 +93,10 @@ class _WelcomescreenState extends State<Welcomescreen> {
                 ),
               )
             ),
-            const SizedBox(height: 15),
+           SizedBox(height: 20,),
             Expanded(
               child: Center(
+                
                 child: SizedBox(
                   width: 250,
                   height: 250,
@@ -102,14 +109,52 @@ class _WelcomescreenState extends State<Welcomescreen> {
                     ),
                   ),
                 ),
+
+
+
               ),
             ),
 
+Center(
+  
+child: Padding(padding: EdgeInsets.all(140),
+  
+  child: 
 
 
+ElevatedButton(onPressed: (){
+Navigator.pushNamed(context, characterscreen);
+
+},
+style: ElevatedButton.styleFrom(
+       backgroundColor: Mycolors.Myblue,
+      padding: EdgeInsets.all( 33),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
+      ),
+      elevation: 5,
+      shadowColor: Colors.black,
+          ),
+ child: Text("Alright, let's go!",style: GoogleFonts.montserrat(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold),))
+
+
+,
+
+  
+ 
+) ,
+
+
+
+
+),
+
+         
 
           ],
+          
         ),
+        
       ),
     );
   }
