@@ -117,32 +117,31 @@ class _WelcomescreenState extends State<Welcomescreen> {
 
 Center(
   
-child: Padding(padding: EdgeInsets.all(140),
-  
-  child: 
-
-
-ElevatedButton(onPressed: (){
-Navigator.pushNamed(context, characterscreen);
-
-},
-style: ElevatedButton.styleFrom(
-       backgroundColor: Mycolors.Myblue,
-      padding: EdgeInsets.all( 33),
+child: Padding(
+  padding: EdgeInsets.symmetric(vertical: 20),
+  child: ElevatedButton(
+    onPressed: () {
+      Navigator.pushNamed(context, characterscreen);
+    },
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Mycolors.Myblue,
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
       ),
       elevation: 5,
       shadowColor: Colors.black,
-          ),
- child: Text("Alright, let's go!",style: GoogleFonts.montserrat(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold),))
-
-
-,
-
-  
- 
-) ,
+    ),
+    child: Text(
+      "Alright, let's go!",
+      style: GoogleFonts.montserrat(
+        color: Colors.white,
+        fontSize: 17,
+        fontWeight: FontWeight.bold
+      )
+    )
+  ),
+),
 
 
 
