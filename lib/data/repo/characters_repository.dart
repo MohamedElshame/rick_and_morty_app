@@ -9,8 +9,8 @@ CharactersRepository(this.charactersApi);
 //? repo passes the data to cubit same as web services 
 //! Used the same object name as in the other folder  
 //? since they have nearly the same functionality.
-Future<List<Character>> getAllcharacters() async{
-final characters=await charactersApi.getAllcharacters();
+Future<List<Character>> getAllcharacters({int startId = 1, int count = 20}) async{
+final characters=await charactersApi.getAllcharacters(startId: startId, count: count);
 
 return characters.map((character)=>Character.fromJson(character)).toList();
 

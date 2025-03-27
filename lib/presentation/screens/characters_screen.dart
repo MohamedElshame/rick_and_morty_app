@@ -17,6 +17,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
  
 
  late List<Character> allcharacters;
+ bool isLastPage = false;
  
  @override
   void initState() {
@@ -35,17 +36,23 @@ return BlocBuilder< CharactersCubit, CharactersState>
 (builder: (context, state )
 
 {
-if (state is CharactersLoaded){
-
-allcharacters =state.characters;
-
-
-return buildLoadedListWidgets();
-
-}
-else{
-return showLoadingIndicator();
-
+if (state is CharactersLoading && allcharacters.isEmpty) {
+  return showLoadingIndicator();
+} else if (state is CharactersLoaded || state is CharactersLoadingMore || state is CharactersNoMoreData) {
+  if (state is CharactersLoaded) {
+    allcharacters = state.characters;
+    isLastPage = false;
+  } else if (state is CharactersLoadingMore) {
+    allcharacters = state.characters;
+  } else if (state is CharactersNoMoreData) {
+    allcharacters = state.characters;
+    isLastPage = true;
+  }
+  return buildLoadedListWidgets();
+} else if (state is CharactersError) {
+  return Center(child: Text("خطأ في تحميل البيانات", style: TextStyle(color: Colors.white, fontSize: 20)));
+} else {
+  return showLoadingIndicator();
 }
 },
 
@@ -72,6 +79,15 @@ child: Container(
 color: Mycolors.MyBeige,
 child: Column(children: [
 buildCharactersList(),
+if (!isLastPage) buildLoadMoreButton(),
+if (isLastPage) 
+  Padding(
+    padding: const EdgeInsets.all(15.0),
+    child: Text(
+      "لا توجد المزيد من الشخصيات",
+      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    ),
+  ),
 
 
 ],),
@@ -85,6 +101,33 @@ buildCharactersList(),
 
 
  }
+
+Widget buildLoadMoreButton() {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 15),
+    child: BlocBuilder<CharactersCubit, CharactersState>(
+      builder: (context, state) {
+        final isLoading = state is CharactersLoadingMore;
+        
+        return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Mycolors.Myblue,
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+          ),
+          onPressed: isLoading 
+            ? null 
+            : () => BlocProvider.of<CharactersCubit>(context).loadMoreCharacters(),
+          child: isLoading
+            ? CircularProgressIndicator(color: Colors.white, strokeWidth: 3)
+            : Text(
+                "تحميل المزيد",
+                style: TextStyle(fontSize: 18, color: Colors.white),
+              ),
+        );
+      },
+    ),
+  );
+}
 
 Widget buildCharactersList(){
 
