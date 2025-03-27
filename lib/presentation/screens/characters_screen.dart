@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_app/business_logic/cubit/characters_cubit.dart';
@@ -57,17 +55,13 @@ return showLoadingIndicator();
 
  }
 Widget showLoadingIndicator(){
-return Center(
-
-child:  CircularProgressIndicator(
-  color: Mycolors.Myblue,
-),
-
-
-);
-
-
-
+  return Center(
+    child: Image.asset(
+      "assets/images/loadingmorti.gif",
+      width: 200,
+      height: 200,
+    ),
+  );
 }
 
 

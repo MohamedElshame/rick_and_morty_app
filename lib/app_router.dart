@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty_app/business_logic/cubit/characters_cubit.dart';
 import 'package:rick_and_morty_app/constants/strings.dart';
 import 'package:rick_and_morty_app/data/repo/characters_repository.dart';
@@ -28,29 +27,18 @@ AppRouter(){
 Route? generateroute(RouteSettings settings){
 
 switch(settings.name){
-  //case welcomescreen:
+  case welcomescreen:
+    return MaterialPageRoute(builder: (_) => const Welcomescreen());
 
- // return MaterialPageRoute(builder: (_) => Welcomescreen() );
+  case characterscreen:
+    return MaterialPageRoute(builder: (_) => const CharactersScreen());
 
-case characterscreen:
-return MaterialPageRoute(builder: (_) => BlocProvider(create: 
-(BuildContext context)=>
-CharactersCubit(charactersRepository),
-child: CharactersScreen(),
-) 
-);
+  case characterdetailsscreen:
+    return MaterialPageRoute(builder: (_) => const CharacterScreenDetails());
 
-case characterdetailsscreen:
-return MaterialPageRoute(builder: (_)=> CharacterScreenDetails());
-
-
+  default:
+    return null;
 }
-
-
-
-
-
-
 }
 
 
